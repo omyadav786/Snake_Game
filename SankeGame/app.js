@@ -2,7 +2,7 @@ const board = document.querySelector('.board');
 const boardHeight = 50;
 const boardWidth = 50;
 const blocks = [];
-const snake = [{x:1,y:3},{x:1,y:4},{x:1,y:5}];
+const snake = [{x:1,y:3}];
 let direction = "down";
 let intervalClear = null;
 const rows = Math.floor(board.clientHeight/boardHeight);
@@ -26,6 +26,7 @@ function rander(){
 
 intervalClear = setInterval(() =>{
     let head = null;
+    blocks[`${food.x}-${food.y}`].classList.add("food");
     if(direction === "left"){
         head = {
             x: snake[0].x , 
@@ -54,21 +55,19 @@ intervalClear = setInterval(() =>{
         alert("Game is Over");
         clearInterval(intervalClear);
     }
+    if(head.x === food.x && head.y === food.y){
+        blocks[`${food.x}-${food.y}`].classList.remove("food");
+        food = {x:Math.floor(Math.random()*rows),y:Math.floor(Math.random()*cols)};
+        snake.unshift(head);
+    }
     snake.forEach(e =>{
         blocks[`${e.x}-${e.y}`].classList.remove("fill");
     })
     snake.unshift(head);
     snake.pop();
     rander();
-},600);
-// // ArrowUp
-// 6app.js:22 undefined
-// app.js:61 ArrowDown
-// 6app.js:22 undefined
-// app.js:61 ArrowRight
-// 6app.js:22 undefined
-// app.js:61 ArrowLeft
-// // 
+},400);
+
 addEventListener("keydown",(e) => {
     if(e.key === 'ArrowUp'){
         direction = 'up';
