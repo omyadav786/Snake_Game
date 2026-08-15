@@ -89,15 +89,38 @@ section .infos {
     width: 100vw;
     position: fixed;
     top: 0;
+    left: 0;
     backdrop-filter: blur(4px);
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
 }
 
-.modal .str-game{
+.start{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-2xl);
+    gap: 20px;
+}
+
+.str-game{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+}
+.restartButton{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+}
+.str-game:hover{
+    transform: scale(0.7);
+}
+
+.restartButton:hover{
+    transform: scale(0.7);
+}
+
+.gameOver{
+    display: none;
 }

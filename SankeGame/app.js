@@ -1,4 +1,8 @@
 const board = document.querySelector('.board');
+const startButton = document.querySelector('.str-game');
+const modal = document.querySelector('.modal');
+const startGame = document.querySelector('.start');
+const restartGame = document.querySelector('.gameOver');
 const boardHeight = 50;
 const boardWidth = 50;
 const blocks = [];
@@ -68,6 +72,12 @@ intervalClear = setInterval(() =>{
     rander();
 },400);
 
+startButton.addEventListener("click",function(){
+    modal.style.display = "none";
+    intervalClear = setInterval(function(){
+        rander();
+    },300);
+})
 addEventListener("keydown",(e) => {
     if(e.key === 'ArrowUp'){
         direction = 'up';
